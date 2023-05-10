@@ -1,0 +1,65 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.marvelbox{
+    width: 74vw;
+    margin-top: 4vh;
+    display: flex;
+    flex-direction: column;
+}
+.marvelheading::before{
+     content: "";
+    width:0.3vw ;
+    height: 4vh;
+    background: #FA320A;
+    position: absolute ;
+}
+.swiper-button-next:after, .swiper-button-prev:after {
+    font-family: swiper-icons;
+    text-transform: none!important;
+    letter-spacing: 0;
+    font-variant: initial;
+    line-height: 1;
+    width: 1vw;
+    background: white !important;
+    border-radius: 50%;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
+    font-size: 1.3rem !important;
+    color: gray;
+    font-weight: bold;
+}
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .tile{
+    --scale: 1.2vw;
+    padding-left: 0%;
+    height: calc(var(--scale) * 16);
+    width: calc(var(--scale) * 11);
+    margin-top: 10px;
+    margin-left: 2px;
+    border-radius: 10px;
+   filter: brightness(0.6);
+  }
+  .popup-content{
+    padding-left: 0% !important;
+    height: calc(var(--scale) * 9) !important;
+    width: calc(var(--scale) * 16) !important;
+    background: black !important;
+    border-radius: 15px !important;
+    padding: 5px !important;
+    border: 3px solid #FA320A !important;
+  }
+  .css-tzssek-MuiSvgIcon-root{
+    color: white !important;
+    font-size: 3.1875rem !important;
+  }
+  
