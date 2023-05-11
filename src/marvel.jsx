@@ -61,7 +61,7 @@ export const Marvel = () => {
                 <Modal link={e.attributes.VideoLink}/> 
       
                 
-              <div className="title" style={{textAlign:"center",marginTop:"2vh" ,fontSize:"0.8rem"}}><b>{e.attributes.Title}</b></div>
+              <div className="title" style={{textAlign:"center",marginTop:"2vh" ,fontSize:"1vw"}}><b>{e.attributes.Title}</b></div>
               </div>
               
             </>

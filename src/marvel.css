@@ -62,4 +62,9 @@
     color: white !important;
     font-size: 3.1875rem !important;
   }
-  
+  @media screen and (max-width:768px)
+  {
+    .css-tzssek-MuiSvgIcon-root{
+      font-size:1.1875rem !important;
+    }
+  }

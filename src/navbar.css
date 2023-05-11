@@ -16,6 +16,12 @@
     gap: 2vw;
     background-color: #FA320A;
 }
+@media screen and (max-width:768px)
+{
+    li{
+        font-size:2.3vw;
+    }
+}
 .logo{
     width: 14vw;
 }

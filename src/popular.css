@@ -12,3 +12,9 @@
    background: #FA320A;
    position: absolute ;
 }
+@media  screen and (max-width:768px)
+{
+    .name,.detail{
+        font-size: 1.8vw;
+    }
+}

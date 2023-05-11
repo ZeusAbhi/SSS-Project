@@ -74,7 +74,7 @@ export const Trending = () => {
                     <img src="./spidy.jpg" alt="" srcset=""  style={{width:"17vw",height:"-webkit-fill-available"}}/>
                      <div className="imagetextbox" style={{width:"17vw",position:"absolute"}} >
                     <p style={{color:"white",fontWeight:"bold", paddingLeft: "1.2rem",
-    paddingRight: "1.2rem"}}>Spider-Man: Across the Spider-Verse Tickets are on sale now</p>
+    paddingRight: "1.2rem"}}>Spider-Man: Across the Spider-Verse</p>
                     </div>
                     </div>
         </div>
