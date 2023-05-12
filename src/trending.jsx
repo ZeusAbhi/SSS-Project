@@ -31,7 +31,7 @@ export const Trending = () => {
             return(
                 <> 
                     <SwiperSlide>
-                  <div key={e}  style={{width:"40vw",display:"flex",flexDirection:"column"}}>
+                  <div key={e}  style={{width:"40vw",display:"flex",flexDirection:"column",position:"relative"}}>
                     
                     <img src={`http://localhost:1337${e.attributes.image.data.attributes.url}`} alt="" srcset="" />
                      <div className="imagetextbox">

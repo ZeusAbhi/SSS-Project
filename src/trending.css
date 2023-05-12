@@ -7,11 +7,11 @@
 .swiper-pagination-bullet {
     width: var(
       --swiper-pagination-bullet-width,
-      var(--swiper-pagination-bullet-size, 10.5px)
+      var(--swiper-pagination-bullet-size, 7.5px)
     ) !important;
     height: var(
       --swiper-pagination-bullet-height,
-      var(--swiper-pagination-bullet-size, 10.5px)
+      var(--swiper-pagination-bullet-size, 7.5px)
     ) !important;
     display: inline-block;
     border-radius: 50%;
