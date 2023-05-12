@@ -3,13 +3,13 @@ import "./popular.css"
 import axios from 'axios';
 export const Popular = () => {
       
-     const [popular,setPopular]=useState([]);
+     const [popularmovie,setPopularMovie]=useState([]);
      const[tv,setTV]=useState([]);
     useEffect(()=>{
 
         async function getMovieData(){
             let response=await axios.get("http://localhost:1337/api/popular-movies?populate=*");
-            setPopular(response.data.data);
+            setPopularMovie(response.data.data);
         }
         getMovieData();
         async function getTVData(){
@@ -42,7 +42,7 @@ export const Popular = () => {
          <div style={{display:"flex",flexDirection:"column"}}>
         <div className="popularheading"><b style={{paddingLeft:"0.5vw"}}>POPULAR STREAMING MOVIES </b></div>
          <div className="popularmovies" style={{width:"inherit",marginTop:"2vh"}}>
-           {popularData(popular)}
+           {popularData(popularmovie)}
          </div>
          </div>
          <div style={{display:"flex",flexDirection:"column"}}>
