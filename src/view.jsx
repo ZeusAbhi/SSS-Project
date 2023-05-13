@@ -2,49 +2,135 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Navbar } from "./navbar";
-import { marvelImages } from "./marvel";
-import Popup from 'reactjs-popup'
-import "./view.css"
+import Popup from "reactjs-popup";
+import { Modal } from "./marvel.jsx";
+import "./marvel.css"
+import "./view.css";
+
 export const View = () => {
-
   const [home, setHome] = useState([]);
-
+  
   useEffect(() => {
     async function getHomeData() {
       let response = await axios.get(
         "http://localhost:1337/api/home-movies?populate=*"
-      );
-      setHome(response.data.data);
-    }
-    getHomeData();
-  }, []);
+        );
+        setHome(response.data.data);
+      }
+      getHomeData();
+    }, []);
+    
+    const homeMovies = (arr, x, y) => {
+     return arr.slice(x, y).map((e) => {
+       return (
+         <>
+           <div
+             key={e}
+             style={{
+               width: "15vw",
+               display: "flex",
+               justifyContent: "center",
+               alignItems: "center",
+               flexDirection: "column",
+               position: "relative",
+             }}
+           >
+             <img
+               className="tile"
+               src={`http://localhost:1337${e.attributes.image.data.attributes.url}`}
+               alt=""
+             />
+   
+             <Modal link={e.attributes.VideoLink} />
+   
+             <div
+               className="title_percent"
+               style={{ display: "flex", alignItems: "center", justifyContent:"center",gap: "1vw" }}
+             >
+               <div
+                 className="title"
+                 style={{ textAlign: "center", marginTop: "2vh", fontSize: "0.8vw" }}
+               >
+                 <b>{e.attributes.Title}</b>
+               </div>
+               <img
+                 style={{ width: "2vw" }}
+                 src={`http://localhost:1337${e.attributes.logo.data[0].attributes.url}`}
+                 alt=""
+               />
+               <span>
+                 {" "}
+                 <b>{e.attributes.Percentage}%</b>
+               </span>
+             </div>
+           </div>
+         </>
+       );
+     });
+   };
+   const handleSortName = () => {
+     setHome(() =>
+       [...home].sort((a, b) => (a.attributes.Title > b.attributes.Title ? 1 : -1))
+     );
+   };
+   const handleSortPercentage = () => {
+     setHome(() =>
+       [...home].sort((a, b) => (a.attributes.Percentage < b.attributes.Percentage ? 1 : -1))
+     );
+   };
+  const Modal2 = () => {
+    return (
+      <Popup
+        trigger={
+          <button
+            className="Route"
+            style={{
+              width: "7vw",
+              height: "5vh",
+              background: "white",
+              borderRadius: "3px",
+              cursor: "pointer",
+            }}
+          >
+            {" "}
+            <b style={{width:"0.8vw"}}>At Home ↓</b>
+          </button>
+        }
+        position="bottom center"
+      >
+        {(close) => (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              background: "black",
+              width: "10vw",
+              border: "0px",
+            }}
+          >
+            <Link
+              id="home"
+              to="/home"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              At Home
+            </Link>
+            <Link
+              id="theatre"
+              to="/theatre"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              At Theatre
+            </Link>
 
-  const handleSort = () => {
-    setHome(() =>
-      [...home].sort((a, b) =>
-        a.attributes.Title > b.attributes.Title ? 1 : -1
-      )
-    );
-
-  };
-   const Modal =()=>{
-    return <Popup trigger={<button className='Route'  style={{width:"7vw",height:"5vh", background: "white",
-    borderRadius: "3px",
-    cursor: "pointer"}} > <b>At Home ↓</b></button>} position="bottom center">
-        {close=>(
-    <div  style={{display:"flex",flexDirection:"column",background:"black",width:"10vw",border:"0px"}}>
-      
-        <Link id="home" to ="/home" style={{textDecoration:"none",color:"white"}}>At Home</Link>
-        <Link id="theatre" to ="/theatre" style={{textDecoration:"none",color:"white"}}>At Theatre</Link>
-        
-        <a className="close" onClick={close}>
-      &times;
-    </a>
-    </div>
-  
+            <a className="close" onClick={close}>
+              &times;
+            </a>
+          </div>
         )}
-    </Popup>
-  }
+      </Popup>
+    );
+  };
   return (
     <>
       <div
@@ -67,24 +153,40 @@ export const View = () => {
             <div className="heading" style={{ paddingLeft: "1rem" }}>
               <h4> Movies At Home (May 2023)</h4>
             </div>
-            <Modal/>
+            <Modal2 />
           </div>
-          <button
-            onClick={handleSort}
-            style={{
-              marginTop: "2vh",
-              paddingLeft: "0.5rem",
-              paddingRight: "0.5rem",
-              marginLeft: "1rem",
-              border: "0px",
-              borderRadius: "10px",
-              color: "white",
-              background: "rgb(59, 130, 246)",
-            }}
-            className="sort"
-          >
-            Sort By Name
-          </button>
+          <div className="sorts" style={{ display: "flex", gap: "2vw" }}>
+            <button
+              onClick={handleSortName}
+              style={{
+                marginTop: "2vh",
+                paddingLeft: "0.5rem",
+                paddingRight: "0.5rem",
+                marginLeft: "1rem",
+                border: "0px",
+                borderRadius: "10px",
+                color: "white",
+                background: "rgb(59, 130, 246)",
+              }}
+              className="sort"
+            >
+              Sort By Name
+            </button>
+            <button className="sort" onClick={handleSortPercentage}
+                 style={{
+                  marginTop: "2vh",
+                  paddingLeft: "0.5rem",
+                  paddingRight: "0.5rem",
+                  marginLeft: "1rem",
+                  border: "0px",
+                  borderRadius: "10px",
+                  color: "white",
+                  background: "rgb(59, 130, 246)",
+                }}
+            >
+              Sort By Percentage
+            </button>
+          </div>
           <div
             className="homemovies"
             style={{
@@ -92,9 +194,10 @@ export const View = () => {
               display: "flex",
               flexWrap: "wrap",
               marginTop: "4vh",
+              gap:"2vh"
             }}
           >
-            {marvelImages(home, 0, 10)}
+            {homeMovies(home, 0, 10)}
           </div>
         </div>
       </div>
