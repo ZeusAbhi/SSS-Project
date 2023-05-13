@@ -3,6 +3,7 @@ import { Navbar } from "./navbar";
 import { Popular } from "./popular";
 import { Trending } from "./trending";
 import SwiperCore, { Autoplay, Navigation } from 'swiper';
+import { View } from "./view";
 function App() {
   
   SwiperCore.use([Autoplay,Navigation])

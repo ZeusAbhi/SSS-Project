@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#home:hover,#theatre:hover{
+    font-weight: bold;
+}
+
+.sort:hover{
+    font-weight: bold;
+    cursor: pointer;
+}

@@ -49,6 +49,9 @@
     border-radius: 10px;
    filter: brightness(0.6);
   }
+  #viewroute:hover{
+    font-weight: bold;
+  }
   .popup-content{
     padding-left: 0% !important;
     height: calc(var(--scale) * 9) !important;
