@@ -1,9 +1,8 @@
-import { Marvel } from "./marvel";
-import { Navbar } from "./navbar";
-import { Popular } from "./popular";
-import { Trending } from "./trending";
+import { Marvel } from "./Components/marvel";
+import { Navbar } from "./Components/navbar";
+import { Popular } from "./Components/popular";
+import { Trending } from "./Components/trending";
 import SwiperCore, { Autoplay, Navigation } from 'swiper';
-import { View } from "./view";
 function App() {
   
   SwiperCore.use([Autoplay,Navigation])
